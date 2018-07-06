@@ -18,13 +18,25 @@ namespace PigeonholerV2
             Console.WriteLine("Sorting...");
             while (true)
             {
-                var list = getListOfInts();
-                list.SelectSort();
-                foreach (var val in list)
+                var sel = getListOfInts();
+                sel.SelectSort();
+                var ins = getListOfInts();
+                ins.InsertionSort();
+
+                foreach (var val in sel)
                 {
                     Console.WriteLine(val);
                 }
                 Console.ReadLine();
+                Console.WriteLine("===============================");
+                Console.WriteLine("");
+                foreach (var val in ins)
+                {
+                    Console.WriteLine(val);
+                }
+                Console.ReadLine();
+                Console.WriteLine("===============================");
+                Console.WriteLine("");
             }
         }
 
