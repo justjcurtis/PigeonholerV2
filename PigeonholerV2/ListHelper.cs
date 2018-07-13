@@ -117,58 +117,68 @@ namespace PigeonholerV2
             return result;
         }
 
-        private static void QuickSort(List<int> list)
+        public static void QuickSort(this List<int> list)
         {
             var listlength = list.Count;
             if (listlength > 1)
             {
-                var midpoint = listlength / 2;
                 var pivot = FindPivot(list);
                 var pival = list[pivot];
                 list.RemoveAt(pivot);
                 list.Add(pival);
 
                 var lastStash = 0;
-                for(int i = 0; i <listlength;i++)
+                for (int i = 0; i < listlength - 1; i++)
                 {
-                    if(list[i] < pivot)
+                    if (list[i] < pival)
                     {
                         var stash = list[i];
-                        list.Remove(i);
+                        list.RemoveAt(i);
                         list.Insert(lastStash, stash);
                         lastStash++;
-                        stash = list[lastStash];
-                        list.Remove(lastStash);
-                        list.Insert(i, stash);
+                        if (lastStash - listlength > 1)
+                        {
+                            stash = list[lastStash + 1];
+                            list.RemoveAt(lastStash + 1);
+                            list.Insert(i, stash);
+                        }
                     }
                 }
-                list.Remove(pivot);
-                list.Insert(lastStash, pival);
+                if (lastStash != 0)
+                {
+                    list.RemoveAt(pivot);
+                    list.Insert(lastStash, pival);
+                }
+                else
+                {
+                    lastStash = listlength - 1;
+                }
+
                 var a = list.GetRange(0, lastStash);
-                var b = list.GetRange(lastStash + 1, listlength - 1 - lastStash);
-                QuickSort(a);
-                QuickSort(b);
+                var b = list.GetRange(lastStash, listlength - lastStash);
+                a.QuickSort();
+                b.QuickSort();
                 list.Clear();
                 list.AddRange(a);
                 list.AddRange(b);
             }
-
-
-
-
+            else
+            {
+                var lol = 1;
+            }
         }
 
-        public static int FindPivot(List<int> list)
+        private static int FindPivot(List<int> list)
         {
             var listlength = list.Count;
             var midpoint = listlength / 2;
 
-            var max = Math.Max(list[0], list[listlength-1]);
+            var max = Math.Max(list[0], list[listlength - 1]);
             if (listlength > 2) max = Math.Max(max, list[midpoint]);
 
             if (max == list[0]) max = 0;
             if (max == list[midpoint]) max = midpoint;
-            if (max == list[listlength]) max = listlength-1;
+            if (max == list[listlength - 1]) max = listlength - 1;
 
             return max;
         }
@@ -176,7 +186,7 @@ namespace PigeonholerV2
         public static bool IsSorted(this List<int> list)
         {
             var listlength = list.Count;
-            for (int i = 0; i < listlength-1; i++)
+            for (int i = 0; i < listlength - 1; i++)
             {
                 if (list[i] > list[i + 1]) return false;
             }
