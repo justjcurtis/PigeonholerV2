@@ -15,13 +15,16 @@ namespace PigeonholerV2
         }
         public void Run()
         {
-            Console.WriteLine("Sorting...");
             while (true)
             {
+                Console.WriteLine("press enter to start select sort");
+                Console.ReadLine();
                 var sel = getListOfInts();
                 sel.SelectSort();
                 var ins = getListOfInts();
                 ins.InsertionSort();
+                var mrg = getListOfInts();
+                mrg.MergeSort();
 
                 foreach (var val in sel)
                 {
@@ -29,6 +32,8 @@ namespace PigeonholerV2
                 }
                 Console.ReadLine();
                 Console.WriteLine("===============================");
+                Console.WriteLine("press enter to start insertion sort");
+                Console.ReadLine();
                 Console.WriteLine("");
                 foreach (var val in ins)
                 {
@@ -36,7 +41,13 @@ namespace PigeonholerV2
                 }
                 Console.ReadLine();
                 Console.WriteLine("===============================");
+                Console.WriteLine("press enter to start merge sort");
+                Console.ReadLine();
                 Console.WriteLine("");
+                foreach (var val in mrg)
+                {
+                    Console.WriteLine(val);
+                }
             }
         }
 
