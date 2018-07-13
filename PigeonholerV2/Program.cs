@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +23,13 @@ namespace PigeonholerV2
                 var mrg = getListOfInts();
                 var qck = getListOfInts();
 
+                Stopwatch s = new Stopwatch();
+
                 Console.WriteLine("press enter to start select sort");
                 Console.ReadLine();
+                s.Start();
                 sel.SelectSort();
+                s.Stop();
                 foreach (var val in sel)
                 {
                     Console.WriteLine(val);
@@ -32,13 +37,17 @@ namespace PigeonholerV2
                 Console.WriteLine("");
                 var success = sel.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
                 Console.WriteLine(success);
+                Console.WriteLine($"Completed in {s.ElapsedTicks} ticks");
+                s.Reset();
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
                 Console.WriteLine("press enter to start insertion sort");
                 Console.ReadLine();
                 Console.WriteLine("");
+                s.Start();
                 ins.InsertionSort();
+                s.Stop();
                 foreach (var val in ins)
                 {
                     Console.WriteLine(val);
@@ -46,13 +55,17 @@ namespace PigeonholerV2
                 Console.WriteLine("");
                 success = ins.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
                 Console.WriteLine(success);
+                Console.WriteLine($"Completed in {s.ElapsedTicks} ticks");
+                s.Reset();
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
                 Console.WriteLine("press enter to start merge sort");
                 Console.ReadLine();
                 Console.WriteLine("");
+                s.Start();
                 mrg.MergeSort();
+                s.Stop();
                 foreach (var val in mrg)
                 {
                     Console.WriteLine(val);
@@ -60,13 +73,17 @@ namespace PigeonholerV2
                 Console.WriteLine("");
                 success = mrg.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
                 Console.WriteLine(success);
+                Console.WriteLine($"Completed in {s.ElapsedTicks} ticks");
+                s.Reset();
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
                 Console.WriteLine("press enter to start quick sort");
                 Console.ReadLine();
                 Console.WriteLine("");
+                s.Start();
                 qck.MergeSort();
+                s.Stop();
                 foreach (var val in qck)
                 {
                     Console.WriteLine(val);
@@ -74,6 +91,8 @@ namespace PigeonholerV2
                 Console.WriteLine("");
                 success = qck.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
                 Console.WriteLine(success);
+                Console.WriteLine($"Completed in {s.ElapsedTicks} ticks");
+                s.Reset();
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
