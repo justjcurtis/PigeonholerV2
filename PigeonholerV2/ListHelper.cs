@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace PigeonholerV2
 {
@@ -115,5 +116,63 @@ namespace PigeonholerV2
 
             return result;
         }
+
+        private static void QuickSort(List<int> list)
+        {
+            var listlength = list.Count;
+            if (listlength > 1)
+            {
+                var midpoint = listlength / 2;
+                var pivot = FindPivot(list);
+                var pival = list[pivot];
+                list.RemoveAt(pivot);
+                list.Add(pival);
+
+                var lastStash = 0;
+                for(int i = 0; i <listlength;i++)
+                {
+                    if(list[i] < pivot)
+                    {
+                        var stash = list[i];
+                        list.Remove(i);
+                        list.Insert(lastStash, stash);
+                        lastStash++;
+                        stash = list[lastStash];
+                        list.Remove(lastStash);
+                        list.Insert(i, stash);
+                    }
+                }
+                list.Remove(pivot);
+                list.Insert(lastStash, pival);
+                var a = list.GetRange(0, lastStash);
+                var b = list.GetRange(lastStash + 1, listlength - 1 - lastStash);
+                QuickSort(a);
+                QuickSort(b);
+                list.Clear();
+                list.AddRange(a);
+                list.AddRange(b);
+            }
+
+
+
+
+        }
+
+        public static int FindPivot(List<int> list)
+        {
+            var listlength = list.Count;
+            var midpoint = listlength / 2;
+
+            var max = Math.Max(list[0], list[listlength-1]);
+            if (listlength > 2) max = Math.Max(max, list[midpoint]);
+
+            if (max == list[0]) max = 0;
+            if (max == list[midpoint]) max = midpoint;
+            if (max == list[listlength]) max = listlength-1;
+
+            return max;
+        }
+
+
     }
 }

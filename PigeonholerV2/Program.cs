@@ -17,37 +17,58 @@ namespace PigeonholerV2
         {
             while (true)
             {
+                var sel = getListOfInts();
+                var ins = getListOfInts();
+                var mrg = getListOfInts();
+                var qck = getListOfInts();
+
                 Console.WriteLine("press enter to start select sort");
                 Console.ReadLine();
-                var sel = getListOfInts();
                 sel.SelectSort();
-                var ins = getListOfInts();
-                ins.InsertionSort();
-                var mrg = getListOfInts();
-                mrg.MergeSort();
-
                 foreach (var val in sel)
                 {
                     Console.WriteLine(val);
                 }
                 Console.ReadLine();
                 Console.WriteLine("===============================");
+                Console.WriteLine("");
                 Console.WriteLine("press enter to start insertion sort");
                 Console.ReadLine();
                 Console.WriteLine("");
+                ins.InsertionSort();
                 foreach (var val in ins)
                 {
                     Console.WriteLine(val);
                 }
                 Console.ReadLine();
                 Console.WriteLine("===============================");
+                Console.WriteLine("");
                 Console.WriteLine("press enter to start merge sort");
                 Console.ReadLine();
                 Console.WriteLine("");
+                mrg.MergeSort();
                 foreach (var val in mrg)
                 {
                     Console.WriteLine(val);
                 }
+                Console.ReadLine();
+                Console.WriteLine("===============================");
+                Console.WriteLine("");
+                Console.WriteLine("press enter to start quick sort");
+                Console.ReadLine();
+                Console.WriteLine("");
+                qck.MergeSort();
+                foreach (var val in qck)
+                {
+                    Console.WriteLine(val);
+                }
+                Console.ReadLine();
+                Console.WriteLine("===============================");
+                Console.WriteLine("");
+                Console.WriteLine("press enter to start again");
+                Console.ReadLine();
+                Console.Clear();
+
             }
         }
 
