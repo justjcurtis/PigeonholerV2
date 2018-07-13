@@ -29,6 +29,9 @@ namespace PigeonholerV2
                 {
                     Console.WriteLine(val);
                 }
+                Console.WriteLine("");
+                var success = sel.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
+                Console.WriteLine(success);
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
@@ -40,6 +43,9 @@ namespace PigeonholerV2
                 {
                     Console.WriteLine(val);
                 }
+                Console.WriteLine("");
+                success = ins.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
+                Console.WriteLine(success);
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
@@ -51,6 +57,9 @@ namespace PigeonholerV2
                 {
                     Console.WriteLine(val);
                 }
+                Console.WriteLine("");
+                success = mrg.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
+                Console.WriteLine(success);
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");
@@ -62,6 +71,9 @@ namespace PigeonholerV2
                 {
                     Console.WriteLine(val);
                 }
+                Console.WriteLine("");
+                success = qck.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
+                Console.WriteLine(success);
                 Console.ReadLine();
                 Console.WriteLine("===============================");
                 Console.WriteLine("");

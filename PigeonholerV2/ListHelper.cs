@@ -173,6 +173,15 @@ namespace PigeonholerV2
             return max;
         }
 
+        public static bool IsSorted(this List<int> list)
+        {
+            var listlength = list.Count;
+            for (int i = 0; i < listlength-1; i++)
+            {
+                if (list[i] > list[i + 1]) return false;
+            }
+            return true;
+        }
 
     }
 }
