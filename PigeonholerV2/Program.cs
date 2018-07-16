@@ -26,16 +26,16 @@ namespace PigeonholerV2
 
                 Stopwatch s = new Stopwatch();
 
-                //Console.WriteLine("press enter to start select sort");
-                //Console.WriteLine(sel.IsSorted());
-                //Console.ReadLine();
-                //s.Start();
-                //sel.SelectSort();
-                //s.Stop();
-                //foreach (var val in sel)
-                //{
-                //    Console.WriteLine(val);
-                //}
+                Console.WriteLine("press enter to start select sort");
+                Console.WriteLine(sel.IsSorted());
+                Console.ReadLine();
+                s.Start();
+                sel.SelectSort();
+                s.Stop();
+                foreach (var val in sel)
+                {
+                    Console.WriteLine(val);
+                }
                 Console.WriteLine("");
                 success = sel.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
                 Console.WriteLine(success);
