@@ -32,10 +32,10 @@ namespace PigeonholerV2
                 s.Start();
                 sel.SelectSort();
                 s.Stop();
-                foreach (var val in sel)
-                {
-                    Console.WriteLine(val);
-                }
+                //foreach (var val in sel)
+                //{
+                //    Console.WriteLine(val);
+                //}
                 Console.WriteLine("");
                 success = sel.IsSorted() ? "Sorting Successful" : "Sorting Unsuccessful";
                 Console.WriteLine(success);
@@ -110,9 +110,9 @@ namespace PigeonholerV2
 
         private List<int> getListOfInts()
         {
-            var r = new Random(101);
+            var r = new Random(314159265);
             var result = new List<int>();
-            for(int i = 0; i< 100000; i++)
+            for(int i = 0; i< 1000; i++)
             {
                 result.Add(r.Next(0, 1000));
             }

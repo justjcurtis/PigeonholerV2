@@ -37,8 +37,9 @@ namespace PigeonholerV2
                     store = list[i + 1];
                     list.RemoveAt(i + 1);
                     list.Insert(i, store);
-                    jump = i;
-                    i = -1;
+                    jump = jump == -1 ? i : jump;
+                    i -= 2;
+                    i = i < -1 ? -1 : i;
                 }
                 else if (jump != -1)
                 {
