@@ -29,6 +29,7 @@ namespace PigeonholerV2
         {
             var length = list.Count;
             var store = 0;
+            var jump = -1;
             for (int i = 0; i < length - 1; i++)
             {
                 if (list[i] > list[i + 1])
@@ -36,7 +37,13 @@ namespace PigeonholerV2
                     store = list[i + 1];
                     list.RemoveAt(i + 1);
                     list.Insert(i, store);
+                    jump = i;
                     i = -1;
+                }
+                else if (jump != -1)
+                {
+                    i = jump;
+                    jump = -1;
                 }
             }
         }

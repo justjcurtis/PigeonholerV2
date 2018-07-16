@@ -26,12 +26,12 @@ namespace PigeonholerV2
 
                 Stopwatch s = new Stopwatch();
 
-                Console.WriteLine("press enter to start select sort");
-                Console.WriteLine(sel.IsSorted());
-                Console.ReadLine();
-                s.Start();
-                sel.SelectSort();
-                s.Stop();
+                //Console.WriteLine("press enter to start select sort");
+                //Console.WriteLine(sel.IsSorted());
+                //Console.ReadLine();
+                //s.Start();
+                //sel.SelectSort();
+                //s.Stop();
                 //foreach (var val in sel)
                 //{
                 //    Console.WriteLine(val);
@@ -110,9 +110,9 @@ namespace PigeonholerV2
 
         private List<int> getListOfInts()
         {
-            var r = new Random();
+            var r = new Random(101);
             var result = new List<int>();
-            for(int i = 0; i< 1000; i++)
+            for(int i = 0; i< 100000; i++)
             {
                 result.Add(r.Next(0, 1000));
             }
