@@ -29,23 +29,16 @@ namespace PigeonholerV2
         {
             var length = list.Count;
             var store = 0;
-            var jump = -1;
-            for (int i = 0; i < length - 1; i++)
+            for (int i = 0; i < length; i++)
             {
-                if (list[i] > list[i + 1])
+                store = list[i];
+                var j = i - 1;
+                while (j >= 0 && list[j] > store)
                 {
-                    store = list[i + 1];
-                    list.RemoveAt(i + 1);
-                    list.Insert(i, store);
-                    jump = jump == -1 ? i : jump;
-                    i -= 2;
-                    i = i < -1 ? -1 : i;
+                    list[j + 1] = list[j];
+                    j--;
                 }
-                else if (jump != -1)
-                {
-                    i = jump;
-                    jump = -1;
-                }
+                list[j + 1] = store;
             }
         }
 
