@@ -128,44 +128,28 @@ namespace PigeonholerV2
                 list.RemoveAt(pivot);
                 list.Add(pival);
 
-                var lastStash = 0;
+                var a = new List<int>();
+                var b = new List<int>();
                 for (int i = 0; i < listlength - 1; i++)
                 {
                     if (list[i] < pival)
                     {
-                        var stash = list[i];
-                        list.RemoveAt(i);
-                        list.Insert(lastStash, stash);
-                        lastStash++;
-                        if (lastStash - listlength > 1)
-                        {
-                            stash = list[lastStash + 1];
-                            list.RemoveAt(lastStash + 1);
-                            list.Insert(i, stash);
-                        }
+                        a.Add(list[i]);
+                    }
+                    else
+                    {
+                        b.Add(list[i]);
                     }
                 }
-                if (lastStash != 0)
-                {
-                    list.RemoveAt(pivot);
-                    list.Insert(lastStash, pival);
-                }
-                else
-                {
-                    lastStash = listlength - 1;
-                }
 
-                var a = list.GetRange(0, lastStash);
-                var b = list.GetRange(lastStash, listlength - lastStash);
+                //var a = list.GetRange(0, lastStash);
+                //var b = list.GetRange(lastStash, listlength - lastStash);
                 a.QuickSort();
                 b.QuickSort();
                 list.Clear();
                 list.AddRange(a);
+                list.Add(pival);
                 list.AddRange(b);
-            }
-            else
-            {
-                var lol = 1;
             }
         }
 

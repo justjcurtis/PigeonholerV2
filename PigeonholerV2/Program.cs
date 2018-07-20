@@ -22,6 +22,7 @@ namespace PigeonholerV2
                 var ins = getListOfInts();
                 var mrg = getListOfInts();
                 var qck = getListOfInts();
+                var unsorted = getListOfInts();
                 var success = string.Empty;
 
                 Stopwatch s = new Stopwatch();
@@ -110,7 +111,7 @@ namespace PigeonholerV2
 
         private List<int> getListOfInts()
         {
-            var r = new Random(314159265);
+            var r = new Random(1811441513);
             var result = new List<int>();
             for(int i = 0; i< 1000; i++)
             {
