@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PigeonholerV2
 {
@@ -155,17 +156,26 @@ namespace PigeonholerV2
 
         private static int FindPivot(List<int> list)
         {
+            var pivot = 0;
             var listlength = list.Count;
             var midpoint = listlength / 2;
 
-            var max = Math.Max(list[0], list[listlength - 1]);
-            if (listlength > 2) max = Math.Max(max, list[midpoint]);
+            var options = new List<int>()
+            {
+                list[0],
+                list[midpoint],
+                list[listlength - 1]
+            };
 
-            if (max == list[0]) max = 0;
-            if (max == list[midpoint]) max = midpoint;
-            if (max == list[listlength - 1]) max = listlength - 1;
+            options.Remove(options.Min());
+            options.Remove(options.Max());
+            var pival = options.FirstOrDefault();
 
-            return max;
+            if (pival == list[midpoint]) pivot = midpoint;
+            if (pival == list[listlength - 1]) pivot = listlength - 1;
+
+            return pivot;
+
         }
 
         public static bool IsSorted(this List<int> list)
