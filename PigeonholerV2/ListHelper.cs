@@ -156,10 +156,15 @@ namespace PigeonholerV2
 
         private static int FindPivot(List<int> list)
         {
-            var pivot = 0;
             var listlength = list.Count;
+            if(listlength < 3)
+            {
+                return 0;
+            }
+
             var midpoint = listlength / 2;
 
+            var pivot = 0;
             var options = new List<int>()
             {
                 list[0],
